@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById('root');
+
+    function Title ()  {
+        return ( // 함수에서 jsx를 반환
+            <h3 id="title" onMouseEnter={() => console.log('mouse enter')}>
+                Hello,I'm span
+            </h3>
+        );
+    }
+    //arrow function으로 위에 것과 동일하게 동작
+    const Button = () => (<button onClick={()=>console.log('im clicked')} style={{backgroundColor: 'tomato'}}>Click me</button>);
+
+    // JSX규칙에 따라서 위에서 만든 버튼과 타이틀(컴포넌트)을 태그 형식으로 불러옴 - 이때 태그명은 함수명과 동일해야함
+    // 컴포넌트의 첫글자는 대문자로 시작해야함, 소문자로 시작하면 HTML태그로 잘못 인식함
+    const Container = (
+        <div>
+            <Title/>
+            <Button/>
+        </div>
+    );
+    ReactDOM.render(Container, root);
+</script>
+</html>
